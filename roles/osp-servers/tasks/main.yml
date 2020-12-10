@@ -1,3 +1,25 @@
 ---
 
 # tasks file for osp.servers
+- name: Create OSP Servers
+  os_server:
+    cloud: openstack
+    name: "{{ __server.value.name }}"
+    image: "{{ __server.value.image }}"
+    key_name: "{{ __server.value.key_name }}"
+    flavor: "{{ __server.value.flavor }}"
+    security_groups: "{{ __server.value.security_group }}"
+    delete_fip: yes
+    wait: no
+    nics:
+      - net-name: int_network
+    meta: "group={{ __server.value.meta[0].group }},deployment_name={{ __server.value.meta[0].deployment_name }}"
+    userdata: |
+      #!/bin/bash
+      curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
+      cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
+
+  loop: "{{ osp_servers | dict2items }}"
+  loop_control:
+    loop_var: __server
+
