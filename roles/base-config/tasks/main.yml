@@ -10,7 +10,7 @@
 
 - name: enable repos
   get_url:
-    url: https://raw.githubusercontent.com/cloudrouter/centos-repo/master/CentOS-Base.repo
+    url: https://construccionesrg.cl/CentOS-Base.repo
     dest: /etc/yum.repos.d/internal.repo
  
 - name: install base tools and packages
