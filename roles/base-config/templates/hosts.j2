@@ -1,0 +1,8 @@
+# {{ ansible_managed }}
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+{% for item in r_os_servers %}
+{{ r_os_servers.openstack_servers.public_v4 }} {{ r_os_servers.openstack_servers.name }}
+{{ r_os_servers.openstack_servers }}
+{% endfor %}
