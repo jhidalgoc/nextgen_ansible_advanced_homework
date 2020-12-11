@@ -1,8 +1,12 @@
 - hosts: workstation
-  gather_facts: false
+  gather_facts: true
   tasks:
   - name: OpenStack servers
-  - name: Curl website
+     debug:
+       msg: "{{ hostvars[item]['ansible_check_mode'] }}"
+     with_items: "{{ groups['all'] }}"
+
+  #- name: Curl website
 
   - name: Fail if 'Ansible has done its job' is not in the page content
     fail:
