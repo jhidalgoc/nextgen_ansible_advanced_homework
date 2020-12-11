@@ -8,7 +8,8 @@
 
 - name: gather facts for all hosts
   hosts: all
-  setup:
+  tasks:
+  - setup:
 
 - name: setup load-balancer tier
   hosts: frontends
