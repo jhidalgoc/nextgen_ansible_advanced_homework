@@ -37,3 +37,14 @@
   loop: "{{ osp_servers | dict2items }}"
   loop_control:
     loop_var: __server
+
+- name: Fetch Instance Info
+  os_server_info:
+    cloud: openstack
+    region_name: regionOne
+  register: r_os_servers
+
+- name: Create hosts file
+  template:
+    src: hosts.j2
+    dest: /etc/hosts
