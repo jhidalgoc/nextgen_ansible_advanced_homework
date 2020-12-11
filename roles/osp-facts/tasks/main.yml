@@ -7,6 +7,7 @@
    - name: Add host
      add_host:
       name: "{{ item.public_v4 }}"
+      ansible_hostname: "{{ item.server.name }}"
       group: "{{ item.metadata.group }}"
       # ansible_ssh_private_key_file: ~/.ssh/openstack.pem
       # ansible_ssh_user: cloud-user
@@ -14,6 +15,7 @@
    - name: Add host
      add_host:
       name: "{{ item.public_v4 }}"
+      ansible_hostname: "{{ item.server.name }}"
       group: "{{ item.metadata.deployment_name }}"
       #      ansible_ssh_private_key_file: ~/.ssh/openstack.pem
       #  ansible_ssh_user: cloud-user
