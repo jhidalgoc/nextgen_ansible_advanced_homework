@@ -45,6 +45,7 @@
   register: r_os_servers
 
 - name: Create hosts file
+  become: true
   template:
     src: hosts.j2
     dest: /etc/hosts
