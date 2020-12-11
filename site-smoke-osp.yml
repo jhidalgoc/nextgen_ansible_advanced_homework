@@ -33,10 +33,10 @@
     uri:
       url: "http://frontend/ping"
       return_content: yes
-    until: "'Ping!' in webpage.results[0].content"
+    until: "'Ping!' in result.content"
     retries: 10
     delay: 1
-    register: webpage
+    register: result
     delegate_to: "{{ item }}"
     loop: "{{ groups['apps'] }}"
     tags:
