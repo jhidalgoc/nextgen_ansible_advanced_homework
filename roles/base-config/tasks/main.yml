@@ -21,5 +21,5 @@
 - name: install base tools and packages
   package:
     name:
-      - mc
+      - telnet
     state: latest
