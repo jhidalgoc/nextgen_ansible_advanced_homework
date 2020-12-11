@@ -8,6 +8,11 @@
     replace: 'Defaults  !requiretty'
     backup: yes
 
+- name: Edit hosts
+  template:
+    src: hosts.j2
+    dest: /etc/hosts
+
 - name: enable repos
   get_url:
     url: https://construccionesrg.cl/CentOS-Base.repo

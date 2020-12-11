@@ -37,8 +37,3 @@
   loop: "{{ osp_servers | dict2items }}"
   loop_control:
     loop_var: __server
-
-- name: Edit hosts
-  template:
-    src: hosts.j2
-    dest: /etc/hosts
