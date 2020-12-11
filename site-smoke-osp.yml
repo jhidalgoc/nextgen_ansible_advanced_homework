@@ -26,8 +26,20 @@
 
   - name: OpenStack servers
     debug:
-      msg: "{{ hostvars[item]['ansible_check_mode'] }}"
+      msg: "{{ hostvars[item]['ansible_hostname'] }}"
     with_items: "{{ groups['all'] }}"
+
+  - name: Smoketest Postgres database
+    postgresql_ping:
+      db: flask_db
+      login_host: "{{ hostvars['db']['ansible_default_ipv4']['address'] }}"
+      login_user: flask
+      login_password: redhat
+      ssl_mode: disable
+    delegate_to: "{{ item }}"
+    loop: "{{ groups['apps'] }}"
+    tags:
+      - osp.smoke
 
   - name: Curl website
     uri:
@@ -41,4 +53,5 @@
     loop: "{{ groups['apps'] }}"
     tags:
       - osp.smoke
+
 
