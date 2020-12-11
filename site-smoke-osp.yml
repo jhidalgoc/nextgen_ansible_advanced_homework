@@ -29,10 +29,16 @@
       msg: "{{ hostvars[item]['ansible_check_mode'] }}"
     with_items: "{{ groups['all'] }}"
 
-  #- name: Curl website
-
-  - name: Fail if 'Ansible has done its job' is not in the page content
-    fail:
-    when: "'Ansible has done its job' not in webpage.results[0].content"
+  - name: Curl website
+    uri:
+      url: "http://frontend/ping"
+      return_content: yes
+    until: "'Ansible has done its job' webpage.results[0].content"
+    retries: 10
+    delay: 1
+    register: webpage
+    delegate_to: "{{ item }}"
+    loop: "{{ groups['apps'] }}"
     tags:
       - osp.smoke
+
