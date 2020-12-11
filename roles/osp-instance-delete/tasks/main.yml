@@ -5,7 +5,7 @@
     cloud: openstack
   register: servers
 
-- name: Create OSP Servers
+- name: Delete instances
   os_server:
     cloud: openstack
     name: "{{ server.name }}"
