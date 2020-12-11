@@ -6,6 +6,10 @@
 # Setup front-end load balancer tier
 
 
+- name: gather facts for all hosts
+  hosts: all
+  setup:
+
 - name: setup load-balancer tier
   hosts: frontends
   become: yes
