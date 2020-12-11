@@ -33,7 +33,7 @@
     uri:
       url: "http://frontend/ping"
       return_content: yes
-    until: "'Ansible has done its job' webpage.results[0].content"
+    until: 'Ping!' in webpage.results[0].content
     retries: 10
     delay: 1
     register: webpage
