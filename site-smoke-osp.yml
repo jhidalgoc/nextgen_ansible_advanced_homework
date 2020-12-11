@@ -2,9 +2,9 @@
   gather_facts: true
   tasks:
   - name: OpenStack servers
-     debug:
-       msg: "{{ hostvars[item]['ansible_check_mode'] }}"
-     with_items: "{{ groups['all'] }}"
+    debug:
+      msg: "{{ hostvars[item]['ansible_check_mode'] }}"
+    with_items: "{{ groups['all'] }}"
 
   #- name: Curl website
 
