@@ -8,7 +8,9 @@
 - name: Create OSP Servers
   os_server:
     cloud: openstack
-    name: "{{ servers.openstack_servers.name }}"
+    name: "{{ server.name }}"
     state: absent
-  loop: "{{ servers }}"
+  loop: "{{ servers.openstack_servers }}"
+  loop_control:
+    loop_var: server
 
