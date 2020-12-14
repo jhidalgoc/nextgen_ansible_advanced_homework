@@ -14,8 +14,8 @@
     dest: /etc/hosts
 
 - name: enable repos
-  get_url:
-    url: https://construccionesrg.cl/CentOS-Base.repo
+  template:
+    src: centos.repo.j2
     dest: /etc/yum.repos.d/internal.repo
  
 - name: install base tools and packages
