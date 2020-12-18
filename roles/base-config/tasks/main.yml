@@ -8,14 +8,16 @@
     replace: 'Defaults  !requiretty'
     backup: yes
 
-- name: Edit hosts
-  template:
-    src: hosts.j2
-    dest: /etc/hosts
+- block 
+  - name: Edit hosts
+    template:
+      src: hosts.j2
+      dest: /etc/hosts
+  ignore_errors: yes
 
 - name: enable repos
   template:
-    src: centos.repo.j2
+    src: repos_template.j2
     dest: /etc/yum.repos.d/internal.repo
  
 - name: install base tools and packages
