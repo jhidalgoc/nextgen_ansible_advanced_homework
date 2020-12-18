@@ -8,7 +8,7 @@
     replace: 'Defaults  !requiretty'
     backup: yes
 
-- block 
+- block:
   - name: Edit hosts
     template:
       src: hosts.j2
