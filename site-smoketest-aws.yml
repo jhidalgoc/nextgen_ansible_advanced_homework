@@ -10,7 +10,7 @@
         
   - debug: var=webpage.content
 
-  - name: Fail if 'Ansible has done its job' is not in the page content
+  - name: Fail if 'Ping' is not in the page content
     fail:
     when: "'Ping!' not in webpage.content"
 
