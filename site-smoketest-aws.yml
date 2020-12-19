@@ -3,7 +3,7 @@
   tasks:
   - name: Curl website
     uri:
-      url: "http://localhost"
+      url: "http://localhost/ping"
       return_content: yes
       status_code: 200
     register: webpage
@@ -12,5 +12,5 @@
 
   - name: Fail if 'Ansible has done its job' is not in the page content
     fail:
-    when: "'Ansible has done its job' not in webpage.content"
+    when: "'Ping!' not in webpage.content"
 
